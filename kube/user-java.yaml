@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    app: java-user
+  name: java-user
+spec:
+  containers:
+  - image: registryawm8866.azurecr.io/tripinsights/java-user:1.0
+    name: java-user
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-user
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: java-user

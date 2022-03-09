@@ -3,12 +3,12 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    app: java-user
-  name: java-user
+    app: user-java
+  name: user-java
 spec:
   containers:
-  - image: registryawm8866.azurecr.io/tripinsights/java-user:1.0
-    name: java-user
+  - image: registryawm8866.azurecr.io/tripinsights/user-java:1.0
+    name: user-java
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Always
@@ -18,9 +18,9 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: java-user
+  name: user-java
 spec:
   ports:
   - port: 80
   selector:
-    app: java-user
+    app: user-java

@@ -9,6 +9,18 @@ spec:
   containers:
   - image: registryawm8866.azurecr.io/tripinsights/trips:1.0
     name: trips
+<<<<<<< Updated upstream
+=======
+    env:
+    - name: SQL_USER
+      value: sqladminaWm8866
+    - name: SQL_PASSWORD
+      value: SQL@4life
+    - name: SQL_DBNAME
+      value: mydrivingDB
+    - name: SQL_SERVER
+      value: sqlserverawm8866.database.windows.net
+>>>>>>> Stashed changes
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Always

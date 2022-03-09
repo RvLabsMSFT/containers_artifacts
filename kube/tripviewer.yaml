@@ -9,6 +9,11 @@ spec:
   containers:
   - image: registryawm8866.azurecr.io/tripinsights/tripviewer:1.0
     name: tripviewer
+    env:
+    - name: USERPROFILE_API_ENDPOINT
+      value: http://userprofile:80
+    - name: TRIPS_API_ENDPOINT
+      value: http://trips:80
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Always

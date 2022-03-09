@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: tripviewer
+  name: tripviewer
+spec:
+  containers:
+  - image: registryawm8866.azurecr.io/tripinsights/tripviewer:1.0
+    name: tripviewer
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: tripviewer
+    app: tripviewer
   name: tripviewer
 spec:
   containers:
@@ -18,3 +18,15 @@ spec:
   dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tripviewer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: tripviewer

@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: poi
+   app: poi
   name: poi
 spec:
   containers:
@@ -13,3 +13,14 @@ spec:
   dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: poi
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: poi

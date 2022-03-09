@@ -3,13 +3,31 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: userprofile
+    app: userprofile
   name: userprofile
 spec:
+  hostname: userprofile
   containers:
   - image: registryawm8866.azurecr.io/tripinsights/userprofile:1.0
     name: userprofile
+    env:
+    - name: SQL_USER
+      value: "sqladminaWm8866"
+    - name: SQL_PASSWORD
+      value: "SQL@4life"
+    - name: SQL_SERVER
+      value: "sqlserverawm8866.database.windows.net"
     resources: {}
-  dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: userprofile
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: userprofile

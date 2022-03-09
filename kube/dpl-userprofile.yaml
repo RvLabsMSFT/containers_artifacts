@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: dpl-userprofile
+  name: dpl-userprofile
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dpl-userprofile
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: dpl-userprofile
+    spec:
+      containers:
+      - image: registryawm8866.azurecr.io/tripinsights/userprofile:1.0
+        name: userprofile
+        env:
+        - name: SQL_USER
+          value: "sqladminaWm8866"
+        - name: SQL_PASSWORD
+          value: "SQL@4life"
+        - name: SQL_SERVER
+          value: "sqlserverawm8866.database.windows.net"
+        resources: {}
+status: {}

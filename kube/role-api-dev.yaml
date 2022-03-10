@@ -1,8 +1,8 @@
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: api-dev-user-full-access
-  namespace: api-dev
+  name: apidev-user-full-access
+  namespace: apidev
 rules:
 - apiGroups: ["", "extensions", "apps"]
   resources: ["*"]

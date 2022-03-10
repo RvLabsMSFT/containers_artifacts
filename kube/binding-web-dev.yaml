@@ -2,12 +2,12 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: webdev-access
-  namespace: dev
+  namespace: webdev
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: webdev-access
 subjects:
-- kind: User
+- kind: Group
   namespace: webdev
-  name: groupObjectId
+  name: 752173a1-bdaf-4e12-8a9a-38f41b87f780

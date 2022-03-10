@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: user-java-agic
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+    appgw.ingress.kubernetes.io/health-probe-path: "/api/user-java/healthcheck"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /api/user-java
+        backend:
+          service:
+            name: user-java
+            port:
+              number: 80
+        pathType: Prefix
+      - path: /api/user-java/healthcheck
+        backend:
+          service:
+            name: user-java
+            port:
+              number: 80
+        pathType: Prefix

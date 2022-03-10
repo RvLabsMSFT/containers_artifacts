@@ -8,6 +8,6 @@ roleRef:
   kind: Role
   name: apidev-access
 subjects:
-- kind: Groups
+- kind: Group
   namespace: apidev
   name: cb3313f5-72a7-44ee-ab50-c9a234f90a8e

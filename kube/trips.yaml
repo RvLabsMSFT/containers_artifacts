@@ -4,24 +4,27 @@ metadata:
   creationTimestamp: null
   labels:
     app: trips
+    aadpodidbinding: team4-pod-id
   name: trips
   namespace: apidev
 spec:
   containers:
   - image: registryawm8866.azurecr.io/tripinsights/trips:1.0
     name: trips
-    env:
-    - name: SQL_USER
-      value: sqladminaWm8866
-    - name: SQL_PASSWORD
-      value: SQL@4life
-    - name: SQL_DBNAME
-      value: mydrivingDB
-    - name: SQL_SERVER
-      value: sqlserverawm8866.database.windows.net
+    volumeMounts:
+      - name: secrets-store01-inline
+        mountPath: "/secrets"
+        readOnly: true
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Always
+  volumes:
+    - name: secrets-store01-inline
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: "azkv-team4"
 status: {}
 
 ---

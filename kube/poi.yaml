@@ -3,16 +3,28 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-   app: poi
+    app: poi
+    aadpodidbinding: team4-pod-id
   name: poi
   namespace: apidev
 spec:
   containers:
   - image: registryawm8866.azurecr.io/tripinsights/poi:1.0
     name: poi
+    volumeMounts:
+      - name: secrets-store01-inline
+        mountPath: "/secrets"
+        readOnly: true
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Always
+  volumes:
+    - name: secrets-store01-inline
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: "azkv-team4"
 status: {}
 
 ---

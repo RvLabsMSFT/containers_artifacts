@@ -4,15 +4,27 @@ metadata:
   creationTimestamp: null
   labels:
     app: user-java
+    aadpodidbinding: team4-pod-id
   name: user-java
   namespace: apidev
 spec:
   containers:
   - image: registryawm8866.azurecr.io/tripinsights/user-java:1.0
     name: user-java
+    volumeMounts:
+      - name: secrets-store01-inline
+        mountPath: "/secrets"
+        readOnly: true
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Always
+  volumes:
+    - name: secrets-store01-inline
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: "azkv-team4"
 status: {}
 
 ---
